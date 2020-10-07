@@ -1,0 +1,36 @@
+Linpack Xtreme v1.1.3 by Regeneration (64-bit)
+
+Current date/time: Wed Oct 07 13:22:49 2020
+
+CPU frequency:    4.088 GHz
+Number of CPUs: 1
+Number of cores: 4
+Number of threads: 4
+
+Parameters are set to:
+
+Number of tests: 1
+Number of equations to solve (problem size) : 20000
+Leading dimension of array                  : 20000
+Number of trials to run                     : 5
+Data alignment value (in Kbytes)            : 4
+
+Maximum memory requested that can be used=3200404096, at the size=20000
+
+=================== Timing linear equation system solver ===================
+
+Size   LDA    Align. Time(s)    GFlops   Residual     Residual(norm) Check
+20000  20000  4      62.127     85.8588  2.657681e-010 2.352630e-002   pass
+20000  20000  4      67.872     78.5909  2.657681e-010 2.352630e-002   pass
+20000  20000  4      67.405     79.1358  2.657681e-010 2.352630e-002   pass
+20000  20000  4      71.565     74.5353  2.657681e-010 2.352630e-002   pass
+20000  20000  4      72.042     74.0419  2.657681e-010 2.352630e-002   pass
+
+Performance Summary (GFlops)
+
+Size   LDA    Align.  Average  Maximal
+20000  20000  4       78.4326  85.8588
+
+Residual checks PASSED
+
+End of tests

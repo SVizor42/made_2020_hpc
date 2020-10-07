@@ -1,0 +1,117 @@
+bi@bi-VirtualBox:~/Documents/hpc/assignment2$ ./run.sh
+g++ -std=c++0x -c  -g matrix.cpp
+ar rc libmatrix.a matrix.o
+g++ -std=c++0x main.cpp libmatrix.a -o matmul_g 
+matmul_g  512
+Multiplying square matrices 512 x 512...
+Running test #1: time = 6.52476 seconds 
+Running test #2: time = 6.14583 seconds 
+Running test #3: time = 6.17462 seconds 
+Running test #4: time = 6.43789 seconds 
+Running test #5: time = 6.15043 seconds 
+Running test #6: time = 6.27785 seconds 
+Running test #7: time = 6.20145 seconds 
+Running test #8: time = 6.15109 seconds 
+Running test #9: time = 6.39645 seconds 
+Running test #10: time = 6.11966 seconds 
+Average runtime is 6.258 seconds
+matmul_g  1024
+Multiplying square matrices 1024 x 1024...
+Running test #1: time = 57.0612 seconds 
+Running test #2: time = 56.5439 seconds 
+Running test #3: time = 55.9143 seconds 
+Running test #4: time = 55.5037 seconds 
+Running test #5: time = 56.3194 seconds 
+Running test #6: time = 57.5558 seconds 
+Running test #7: time = 56.5935 seconds 
+Running test #8: time = 56.24 seconds 
+Running test #9: time = 57.8896 seconds 
+Running test #10: time = 57.6289 seconds 
+Average runtime is 56.725 seconds
+matmul_g  2048
+Multiplying square matrices 2048 x 2048...
+Running test #1: time = 578.314 seconds 
+Running test #2: time = 451.424 seconds 
+Running test #3: time = 445.836 seconds 
+Running test #4: time = 448.429 seconds 
+Running test #5: time = 447.521 seconds 
+Running test #6: time = 447.183 seconds 
+Running test #7: time = 446.495 seconds 
+Running test #8: time = 448.258 seconds 
+Running test #9: time = 448.429 seconds 
+Running test #10: time = 449.635 seconds 
+Average runtime is 461.152 seconds
+matmul_g  4096  3
+Multiplying square matrices 4096 x 4096...
+Running test #1: time = 4449.73 seconds 
+Running test #2: time = 4401.1 seconds 
+Running test #3: time = 4343.67 seconds 
+Average runtime is 4398.2 seconds
+
+
+rm -rf *.o libmatrix.a matmul 
+g++ -std=c++0x -O3 -c  matrix.cpp
+ar rc libmatrix.a matrix.o
+g++ -std=c++0x main.cpp libmatrix.a -o matmul_O3
+matmul_O3  512
+Multiplying square matrices 512 x 512...
+Running test #1: time = 0.290667 seconds 
+Running test #2: time = 0.298209 seconds 
+Running test #3: time = 0.308007 seconds 
+Running test #4: time = 0.322035 seconds 
+Running test #5: time = 0.341288 seconds 
+Running test #6: time = 0.362804 seconds 
+Running test #7: time = 0.346692 seconds 
+Running test #8: time = 0.341186 seconds 
+Running test #9: time = 0.334734 seconds 
+Running test #10: time = 0.349265 seconds 
+Average runtime is 0.329489 seconds
+matmul_O3  1024
+Multiplying square matrices 1024 x 1024...
+Running test #1: time = 3.56655 seconds 
+Running test #2: time = 4.03742 seconds 
+Running test #3: time = 4.21297 seconds 
+Running test #4: time = 4.21534 seconds 
+Running test #5: time = 4.149 seconds 
+Running test #6: time = 4.16471 seconds 
+Running test #7: time = 4.14113 seconds 
+Running test #8: time = 4.20699 seconds 
+Running test #9: time = 4.13217 seconds 
+Running test #10: time = 4.1261 seconds 
+Average runtime is 4.09524 seconds
+matmul_O3  2048
+Multiplying square matrices 2048 x 2048...
+Running test #1: time = 77.8727 seconds 
+Running test #2: time = 75.6532 seconds 
+Running test #3: time = 71.4672 seconds 
+Running test #4: time = 67.3367 seconds 
+Running test #5: time = 67.4083 seconds 
+Running test #6: time = 67.398 seconds 
+Running test #7: time = 67.3209 seconds 
+Running test #8: time = 67.8674 seconds 
+Running test #9: time = 67.1464 seconds 
+Running test #10: time = 67.5439 seconds 
+Average runtime is 69.7015 seconds
+matmul_O3  4096
+Multiplying square matrices 4096 x 4096...
+Running test #1: time = 649.528 seconds 
+Running test #2: time = 615.748 seconds 
+Running test #3: time = 627.84 seconds 
+Running test #4: time = 664.157 seconds 
+Running test #5: time = 582.725 seconds 
+Running test #6: time = 581.557 seconds 
+Running test #7: time = 580.63 seconds 
+Running test #8: time = 577.415 seconds 
+Running test #9: time = 584.866 seconds 
+Running test #10: time = 603.237 seconds 
+Average runtime is 606.771 seconds
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,116 @@
+C:\Users\tkamaliev\Downloads\assignment2>g++ -std=c++0x -c -g matrix.cpp
+
+C:\Users\tkamaliev\Downloads\assignment2>ar rc libmatrix.a matrix.o
+
+C:\Users\tkamaliev\Downloads\assignment2>g++ -std=c++0x main.cpp libmatrix.a -o matmul_g.exe
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_g.exe 512
+Multiplying square matrices 512 x 512...
+Running test #1: time = 6.54224 seconds
+Running test #2: time = 7.21879 seconds
+Running test #3: time = 8.05802 seconds
+Running test #4: time = 8.28816 seconds
+Running test #5: time = 8.02727 seconds
+Running test #6: time = 7.40528 seconds
+Running test #7: time = 7.55061 seconds
+Running test #8: time = 7.60914 seconds
+Running test #9: time = 7.92211 seconds
+Running test #10: time = 8.04066 seconds
+Average runtime is 7.66623 seconds
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_g.exe 1024
+Multiplying square matrices 1024 x 1024...
+Running test #1: time = 68.0552 seconds
+Running test #2: time = 67.3424 seconds
+Running test #3: time = 67.5483 seconds
+Running test #4: time = 67.34 seconds
+Running test #5: time = 69.9385 seconds
+Running test #6: time = 69.2937 seconds
+Running test #7: time = 68.6504 seconds
+Running test #8: time = 69.0308 seconds
+Running test #9: time = 69.1767 seconds
+Running test #10: time = 73.2642 seconds
+Average runtime is 68.964 seconds
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_g.exe 2048
+Multiplying square matrices 2048 x 2048...
+Running test #1: time = 639.297 seconds
+Running test #2: time = 618.066 seconds
+Running test #3: time = 619.608 seconds
+Running test #4: time = 611.577 seconds
+Running test #5: time = 618.784 seconds
+Running test #6: time = 592.499 seconds
+Running test #7: time = 479.243 seconds
+Running test #8: time = 478.827 seconds
+Running test #9: time = 478.443 seconds
+Running test #10: time = 480.682 seconds
+Average runtime is 561.703 seconds
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_g.exe 4096 3
+Multiplying square matrices 4096 x 4096...
+Running test #1: time = 6807.53 seconds
+Running test #2: time = 7932.25 seconds
+Running test #3: time = 7881.81 seconds
+Average runtime is 6807.53 seconds
+
+C:\Users\tkamaliev\Downloads\assignment2>g++ -std=c++0x -c -O3  matrix.cpp
+
+C:\Users\tkamaliev\Downloads\assignment2>ar rc libmatrix.a matrix.o
+
+C:\Users\tkamaliev\Downloads\assignment2>g++ -std=c++0x main.cpp libmatrix.a -o matmul_O3.exe
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_O3.exe 512
+Multiplying square matrices 512 x 512...
+Running test #1: time = 0.844454 seconds
+Running test #2: time = 0.88387 seconds
+Running test #3: time = 0.966707 seconds
+Running test #4: time = 0.653232 seconds
+Running test #5: time = 0.623064 seconds
+Running test #6: time = 0.653728 seconds
+Running test #7: time = 0.632402 seconds
+Running test #8: time = 0.619008 seconds
+Running test #9: time = 0.623342 seconds
+Running test #10: time = 0.651706 seconds
+Average runtime is 0.715151 seconds
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_O3.exe 1024
+Multiplying square matrices 1024 x 1024...
+Running test #1: time = 11.472 seconds
+Running test #2: time = 12.8519 seconds
+Running test #3: time = 13.6941 seconds
+Running test #4: time = 12.2646 seconds
+Running test #5: time = 13.7243 seconds
+Running test #6: time = 13.1321 seconds
+Running test #7: time = 12.2026 seconds
+Running test #8: time = 12.0915 seconds
+Running test #9: time = 12.152 seconds
+Running test #10: time = 12.3742 seconds
+Average runtime is 12.5959 seconds
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_O3.exe 2048
+Multiplying square matrices 2048 x 2048...
+Running test #1: time = 117.015 seconds
+Running test #2: time = 119.451 seconds
+Running test #3: time = 118.81 seconds
+Running test #4: time = 126.868 seconds
+Running test #5: time = 121.037 seconds
+Running test #6: time = 120.055 seconds
+Running test #7: time = 119.684 seconds
+Running test #8: time = 119.528 seconds
+Running test #9: time = 119.541 seconds
+Running test #10: time = 119.5 seconds
+Average runtime is 120.149 seconds
+
+C:\Users\tkamaliev\Downloads\assignment2>matmul_O3.exe 4096
+Multiplying square matrices 4096 x 4096...
+Running test #1: time = 1500.18 seconds
+Running test #2: time = 1513.7 seconds
+Running test #3: time = 1410.63 seconds
+Running test #4: time = 1444.16 seconds
+Running test #5: time = 1471.89 seconds
+Running test #6: time = 1520.14 seconds
+Running test #7: time = 1697.43 seconds
+Running test #8: time = 2039.35 seconds
+Running test #9: time = 1897.92 seconds
+Running test #10: time = 1861.8 seconds
+Average runtime is 1635.72 seconds
