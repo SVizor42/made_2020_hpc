@@ -1,0 +1,99 @@
+root@8ed2e29d9898:/matmul# make OPT=-O3 DBGCFLAGS= EXECUTABLE=matmul_O3
+g++ -std=c++0x -c -O3  matrix.cpp
+ar rc libmatrix.a matrix.o
+g++ -std=c++0x main.cpp libmatrix.a -o matmul_O3 
+root@8ed2e29d9898:/matmul# ./matmul_O3 512  
+Multiplying square matrices 512 x 512...
+Running test #1: time = 0.266191 seconds 
+Running test #2: time = 0.260213 seconds 
+Running test #3: time = 0.264992 seconds 
+Running test #4: time = 0.257359 seconds 
+Running test #5: time = 0.261334 seconds 
+Running test #6: time = 0.25986 seconds 
+Running test #7: time = 0.276527 seconds 
+Running test #8: time = 0.272122 seconds 
+Running test #9: time = 0.267752 seconds 
+Running test #10: time = 0.261689 seconds 
+Average runtime is 0.264804 seconds
+root@8ed2e29d9898:/matmul# ./matmul_O3 1024
+Multiplying square matrices 1024 x 1024...
+Running test #1: time = 3.24829 seconds 
+Running test #2: time = 3.20823 seconds 
+Running test #3: time = 3.18151 seconds 
+Running test #4: time = 3.24133 seconds 
+Running test #5: time = 3.17479 seconds 
+Running test #6: time = 3.17841 seconds 
+Running test #7: time = 3.21746 seconds 
+Running test #8: time = 3.15566 seconds 
+Running test #9: time = 3.15169 seconds 
+Running test #10: time = 3.21682 seconds 
+Average runtime is 3.19742 seconds
+root@8ed2e29d9898:/matmul# ./matmul_O3 2048
+Multiplying square matrices 2048 x 2048...
+Running test #1: time = 61.8689 seconds 
+Running test #2: time = 61.9088 seconds 
+Running test #3: time = 61.9468 seconds 
+Running test #4: time = 61.5468 seconds 
+Running test #5: time = 62.7934 seconds 
+Running test #6: time = 63.2177 seconds 
+Running test #7: time = 63.8012 seconds 
+Running test #8: time = 63.9509 seconds 
+Running test #9: time = 64.104 seconds 
+Running test #10: time = 63.9509 seconds 
+Average runtime is 62.9089 seconds
+root@8ed2e29d9898:/matmul# ./matmul_O3 4096 5
+Multiplying square matrices 4096 x 4096...
+Running test #1: time = 673.949 seconds 
+Running test #2: time = 629.125 seconds 
+Running test #3: time = 632.792 seconds 
+Running test #4: time = 627.071 seconds 
+Running test #5: time = 628.881 seconds 
+Average runtime is 638.364 seconds
+
+root@8ed2e29d9898:/matmul# make clean
+rm -rf *.o libmatrix.a matmul 
+root@8ed2e29d9898:/matmul# make OPT= DBGCFLAGS=-g EXECUTABLE=matmul_g 
+g++ -std=c++0x -c  -g matrix.cpp
+ar rc libmatrix.a matrix.o
+g++ -std=c++0x main.cpp libmatrix.a -o matmul_g 
+root@8ed2e29d9898:/matmul# ./matmul_g 512
+Multiplying square matrices 512 x 512...
+Running test #1: time = 5.41016 seconds 
+Running test #2: time = 5.41164 seconds 
+Running test #3: time = 5.3858 seconds 
+Running test #4: time = 5.40227 seconds 
+Running test #5: time = 5.21302 seconds 
+Running test #6: time = 5.35014 seconds 
+Running test #7: time = 5.45895 seconds 
+Running test #8: time = 5.28539 seconds 
+Running test #9: time = 5.43467 seconds 
+Running test #10: time = 5.40834 seconds 
+Average runtime is 5.37604 seconds
+root@8ed2e29d9898:/matmul# ./matmul_g 1024
+Multiplying square matrices 1024 x 1024...
+Running test #1: time = 47.9559 seconds 
+Running test #2: time = 48.4106 seconds 
+Running test #3: time = 48.9896 seconds 
+Running test #4: time = 50.8501 seconds 
+Running test #5: time = 51.316 seconds 
+Running test #6: time = 49.7097 seconds 
+Running test #7: time = 49.2951 seconds 
+Running test #8: time = 49.6267 seconds 
+Running test #9: time = 49.8774 seconds 
+Running test #10: time = 49.6279 seconds 
+Average runtime is 49.5659 seconds
+root@8ed2e29d9898:/matmul# ./matmul_g 2048
+Multiplying square matrices 2048 x 2048...
+Running test #1: time = 447.059 seconds 
+Running test #2: time = 458.849 seconds 
+Running test #3: time = 479.926 seconds 
+Running test #4: time = 476.712 seconds 
+Running test #5: time = 445.471 seconds 
+Running test #6: time = 445.204 seconds 
+Running test #7: time = 447.67 seconds 
+Running test #8: time = 452.424 seconds 
+Running test #9: time = 455.024 seconds 
+Running test #10: time = 501.182 seconds 
+Average runtime is 460.952 seconds
+
+
