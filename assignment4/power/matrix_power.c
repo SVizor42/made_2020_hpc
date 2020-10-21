@@ -44,9 +44,9 @@ void calcMatMul(double *A, double *B, double *C, const size_t N) {
         	offset_i = i * N;
             for (j = 0; j < N; j++) {
                 C[offset_i + j] += A[offset_i + k] * B[offset_k + j];
-          	}
+	    	}
       	}
-  	}
+    }
 }
  
 double* matrixBinPow(double *Adj_m, const size_t N, const size_t power) {    
