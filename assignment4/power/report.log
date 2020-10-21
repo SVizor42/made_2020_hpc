@@ -1,0 +1,26 @@
+Optimal loops placing:
+svizor@svizor-VirtualBox:~/Documents/hpc/assignment4/power$ ./matrix_power.out 512 32 >> report.log
+Running test #1: time = 3.131930 seconds
+Running test #2: time = 3.093107 seconds
+Running test #3: time = 3.113687 seconds
+Running test #4: time = 3.065429 seconds
+Running test #5: time = 3.062650 seconds
+Average calculation time is 3.093361 seconds
+
+Optimal loops placing + O3:
+svizor@svizor-VirtualBox:~/Documents/hpc/assignment4/power$ ./matrix_power.out 512 32
+Running test #1: time = 0.366148 seconds
+Running test #2: time = 0.355928 seconds
+Running test #3: time = 0.356998 seconds
+Running test #4: time = 0.361625 seconds
+Running test #5: time = 0.363514 seconds
+Average calculation time is 0.360843 seconds
+
+Optimal loops placing + O3 + OpenMP:
+svizor@svizor-VirtualBox:~/Documents/hpc/assignment4/power$ ./matrix_power.out 512 32
+Running test #1: time = 0.191597 seconds
+Running test #2: time = 0.204445 seconds
+Running test #3: time = 0.222449 seconds
+Running test #4: time = 0.218243 seconds
+Running test #5: time = 0.203920 seconds
+Average calculation time is 0.208131 seconds
