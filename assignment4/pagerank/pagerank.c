@@ -78,22 +78,22 @@ double calcNorm(double* x, const size_t N, const size_t type = 1) {
 	
 /*	Calculate L1-norm	*/
 	if (type == 1) {
-	    #pragma omp parallel for private(i) \
-	    	reduction(+: result)
+		#pragma omp parallel for private(i) \
+			reduction(+: result)
 		for (i = 0; i < N; i++) {
 			result += x[i];
 		}
 	}
 /*	Else calculate L2-norm	*/
 	else {
-	    #pragma omp parallel for private(i) \
-	    	reduction(+: result)
+		#pragma omp parallel for private(i) \
+			reduction(+: result)
 		for (i = 0; i < N; i++) {
 			result += x[i] * x[i];
 		}
 		result = sqrt(result);
 	}
-	
+
 	return result;
 }
 
@@ -114,11 +114,11 @@ double* pagerank(double *A, const size_t N, double damping = 0.85) {
 	double* result = (double *) malloc(N * sizeof(double));
 //	randomVector(&result[0], N);
 
-    #pragma omp parallel for private(i) \
-    	shared(N)		
-    for (i = 0; i < N; i++) {
-        result[i] = 1. / N;
-    }
+	#pragma omp parallel for private(i) \
+		shared(N)		
+	for (i = 0; i < N; i++) {
+		result[i] = 1. / N;
+	}
 	
 	norm = calcNorm(&result[0], N);
 	nomalizeVector(&result[0], N, norm);
@@ -126,8 +126,8 @@ double* pagerank(double *A, const size_t N, double damping = 0.85) {
 	double* A_hat = (double *) malloc(N * N * sizeof(double));
 	zeroMatrix(&A_hat[0], N);
 
-    #pragma omp parallel for private(i, j, offset) \
-    	shared(damping, N)
+	#pragma omp parallel for private(i, j, offset) \
+		shared(damping, N)
 	for (i = 0; i < N; i++) {
 		offset = i * N;
 		for (j = 0; j < N; j++) {	
@@ -144,9 +144,9 @@ double* pagerank(double *A, const size_t N, double damping = 0.85) {
 		nomalizeVector(&result[0], N, norm);
 		
 		iters++;
-    	printf("Iteration # %d: norm = %lf\n", iters, norm);
+		printf("Iteration # %d: norm = %lf\n", iters, norm);
 	}
-	
+
 	return result;
 }
 
@@ -154,9 +154,9 @@ double* naiveRanking(double *A, const size_t N) {
 	size_t i, j, offset;
 
 	double* result = (double *) malloc(N * sizeof(double));
-    zeroVector(&result[0], N);
+	zeroVector(&result[0], N);
 
-    #pragma omp parallel for private(i, j, offset)  
+	#pragma omp parallel for private(i, j, offset)  
 	for (i = 0; i < N; i++) {
 		offset = i * N;	
 		for (j = 0; j < N; j++) {
@@ -168,75 +168,75 @@ double* naiveRanking(double *A, const size_t N) {
 }
  
 int main(int argc, const char* argv[]) {   
-    size_t N = 5;
-    int iters = 5;
-    size_t i, j, k;
-    
-    struct timeval start, end;
+	size_t N = 5;
+	int iters = 5;
+	size_t i, j, k;
+
+	struct timeval start, end;
 	double run_time = 0.0;
 	unsigned int tid, seed;
 
-    if (argc > 1) {
-    	N = atoi(argv[1]);
-    	if (argc > 2) {
-    		EPS = atof(argv[2]);
+	if (argc > 1) {
+		N = atoi(argv[1]);
+		if (argc > 2) {
+			EPS = atof(argv[2]);
 			if (argc > 3) {
 				fileName = argv[3];
 			}    		
-    	}
-    } 
+		}
+	} 
     
 	omp_set_num_threads(nThreads);
 	seedThreads();
 
-    char col_name[N][100];
-    double* graph = (double *) malloc(N * N * sizeof(double));
-    double* page_ranks = (double *) malloc(N * sizeof(double));
-    double* naive_ranks = (double *) malloc(N * sizeof(double));
+	char col_name[N][100];
+	double* graph = (double *) malloc(N * N * sizeof(double));
+	double* page_ranks = (double *) malloc(N * sizeof(double));
+	double* naive_ranks = (double *) malloc(N * sizeof(double));
 
 	memset(col_name, 0, sizeof(col_name[0][0]) * N * 100);
 	
-    #pragma omp parallel for private(i)  
+	#pragma omp parallel for private(i)  
 	for (int i = 0; i < N; i++) {
 		sprintf(col_name[i], "%d", i + 1);
 	}
 
-    zeroMatrix(&graph[0], N);
+	zeroMatrix(&graph[0], N);
 
 /*	Get data from file if available	*/    
 	if (fileName != NULL) {   
-		FILE* fp;
+	FILE* fp;
 		fp = fopen(fileName, "r+");
 		if (fp == NULL) {
-		    exit(EXIT_FAILURE);
-	   	}
-	   	
+			exit(EXIT_FAILURE);
+		}
+		
 		char line[1024];
 		char* ptr = NULL;
 		i = 0;
 		while (fgets(line, sizeof(line), fp)) {
-		    j = 0;
-		    ptr = strtok(line, ";");
-		    while (ptr != NULL)  {
-		        if (i > 0) {
-		            if (j == 0) {
-		                memcpy(&col_name[i - 1] , ptr, strlen(ptr));
-		            }
-		            else {
-		                graph[(i - 1) * N + (j - 1)] = (double) strtod(ptr, NULL);
-		            }
-		        }
-		        ptr = strtok(NULL, ";");
-		        j++;
-		    }
-		    i++;
+			j = 0;
+			ptr = strtok(line, ";");
+			while (ptr != NULL)  {
+				if (i > 0) {
+					if (j == 0) {
+						memcpy(&col_name[i - 1] , ptr, strlen(ptr));
+					}
+					else {
+						graph[(i - 1) * N + (j - 1)] = (double) strtod(ptr, NULL);
+					}
+				}
+				ptr = strtok(NULL, ";");
+				j++;
+			}
+			i++;
 		}
 		
 		fclose(fp);
 	}
 /*	Else generate data	*/
 	else {
-    	randomMatrix(&graph[0], N);
+		randomMatrix(&graph[0], N);
 	}
 
 /*
@@ -251,24 +251,24 @@ int main(int argc, const char* argv[]) {
 
 	gettimeofday(&start, NULL);  
 	naive_ranks = naiveRanking(&graph[0], N);
-    page_ranks = pagerank(&graph[0], N);
+	page_ranks = pagerank(&graph[0], N);
 	gettimeofday(&end, NULL);
 		
 	run_time = end.tv_sec - start.tv_sec + ((double) (end.tv_usec - start.tv_usec)) / 1000000;
 
 	printf("\nNaive ranking:\n");    
-    for (i = 0; i < N; i++) {
+	for (i = 0; i < N; i++) {
 		printf("%s: %lf\n", col_name[i], naive_ranks[i]);
-  	}
+	}
     
 	printf("\nPagerank solution (percent):\n");    
-    for (i = 0; i < N; i++) {
+	for (i = 0; i < N; i++) {
 		printf("%s: %lf\n", col_name[i], page_ranks[i] * 100);
-  	}
+	}
 	printf("\nRunning time = %lf seconds\n", run_time);	
 
-    free(graph); 
- 	free(page_ranks);
-    
-    return 0;
+	free(graph); 
+	free(page_ranks);
+ 
+	return 0;
 }
