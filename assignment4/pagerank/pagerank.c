@@ -13,55 +13,55 @@ unsigned int seeds[nThreads];
 const char* fileName = NULL;
 
 void seedThreads() {
-    int my_thread_id;
-    unsigned int seed;
-    #pragma omp parallel private(seed, my_thread_id)
-    {
-        my_thread_id = omp_get_thread_num();
-        unsigned int seed = (unsigned) time(NULL);
-        seeds[my_thread_id] = (seed & 0xFFFFFFF0) | (my_thread_id + 1);
-    }
+	int my_thread_id;
+	unsigned int seed;
+	#pragma omp parallel private(seed, my_thread_id)
+	{
+		my_thread_id = omp_get_thread_num();
+		unsigned int seed = (unsigned) time(NULL);
+		seeds[my_thread_id] = (seed & 0xFFFFFFF0) | (my_thread_id + 1);
+	}
 }
 
 void zeroMatrix(double *A, const size_t N) {
-    #pragma omp parallel for
-    for (size_t i = 0; i < N; i++)
-        for (size_t j = 0; j < N; j++) {
-            A[i * N + j] = 0.0;
-        }
+	#pragma omp parallel for
+	for (size_t i = 0; i < N; i++)
+		for (size_t j = 0; j < N; j++) {
+			A[i * N + j] = 0.0;
+		}
 }
 
 void zeroVector(double *A, const size_t N) {
-    #pragma omp parallel for
-    for (size_t i = 0; i < N; i++) {
-        A[i] = 0.0;
-    }
+	#pragma omp parallel for
+	for (size_t i = 0; i < N; i++) {
+		A[i] = 0.0;
+	}
 }
  
 void randomMatrix(double *A, const size_t N) {
-    srand(time(NULL));
+	srand(time(NULL));
 	#pragma omp parallel for
-    for (size_t i = 0; i < N; i++)
-        for (size_t j = 0; j < N; j++) {
-            A[i * N + j] = rand() % (multiEdges + 1);
-        }
+	for (size_t i = 0; i < N; i++)
+		for (size_t j = 0; j < N; j++) {
+			A[i * N + j] = rand() % (multiEdges + 1);
+		}
 }
 
 void randomVector(double *x, const size_t N) {
-    srand(time(NULL));
+	srand(time(NULL));
 	#pragma omp parallel for
-    for (size_t i = 0; i < N; i++) {
+	for (size_t i = 0; i < N; i++) {
 		x[i] = (double) rand() / RAND_MAX;
-  	}
+	}
 }
  
 double* calcMatVecMul(double *A, double *x, const size_t N) {
 	size_t i, j, offset;
 	
-    double* result = (double *) malloc(N * sizeof(double)); 	
-    zeroVector(&result[0], N);	
+	double* result = (double *) malloc(N * sizeof(double)); 	
+	zeroVector(&result[0], N);	
 
-    #pragma omp parallel for private(i, j, offset)
+	#pragma omp parallel for private(i, j, offset)
  	for (i = 0; i < N; i++) {
  		offset = i * N;
 		for (j = 0; j < N; j++) {
@@ -99,8 +99,8 @@ double calcNorm(double* x, const size_t N, const size_t type = 1) {
 
 void nomalizeVector(double* x, const size_t N, double norm) {
 	size_t i;
-    #pragma omp parallel for private(i) \
-    	shared(norm)	
+	#pragma omp parallel for private(i) \
+		shared(norm)
 	for (i = 0; i < N; i++) {
 		x[i] /= norm;
 	}
@@ -185,7 +185,7 @@ int main(int argc, const char* argv[]) {
 			}    		
 		}
 	} 
-    
+
 	omp_set_num_threads(nThreads);
 	seedThreads();
 
@@ -260,7 +260,7 @@ int main(int argc, const char* argv[]) {
 	for (i = 0; i < N; i++) {
 		printf("%s: %lf\n", col_name[i], naive_ranks[i]);
 	}
-    
+
 	printf("\nPagerank solution (percent):\n");    
 	for (i = 0; i < N; i++) {
 		printf("%s: %lf\n", col_name[i], page_ranks[i] * 100);
