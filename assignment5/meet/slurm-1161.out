@@ -1,0 +1,123 @@
+Sending messages via 12 processes.
+Process rank 0, name node1 initilazes message exchange.
+
+Step 11 of 11...
+Receiver: rank #8, name node4
+Sender: rank #0, name node1
+Message content:
+#1: name node1, rank #0
+
+Step 10 of 11...
+Receiver: rank #9, name node5
+Sender: rank #8, name node4
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+
+Step 8 of 11...
+Receiver: rank #10, name node5
+Sender: rank #11, name node5
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+
+Step 9 of 11...
+Receiver: rank #11, name node5
+Sender: rank #9, name node5
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+
+Step 6 of 11...
+Receiver: rank #6, name node4
+Sender: rank #7, name node4
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+#5: name node5, rank #10
+#6: name node4, rank #7
+
+Step 7 of 11...
+Receiver: rank #7, name node4
+Sender: rank #10, name node5
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+#5: name node5, rank #10
+
+Step 5 of 11...
+Receiver: rank #3, name node3
+Sender: rank #6, name node4
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+#5: name node5, rank #10
+#6: name node4, rank #7
+#7: name node4, rank #6
+
+Step 4 of 11...
+Receiver: rank #5, name node3
+Sender: rank #3, name node3
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+#5: name node5, rank #10
+#6: name node4, rank #7
+#7: name node4, rank #6
+#8: name node3, rank #3
+
+Step 3 of 11...
+Receiver: rank #4, name node3
+Sender: rank #5, name node3
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+#5: name node5, rank #10
+#6: name node4, rank #7
+#7: name node4, rank #6
+#8: name node3, rank #3
+#9: name node3, rank #5
+
+Step 2 of 11...
+Receiver: rank #2, name node3
+Sender: rank #4, name node3
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+#5: name node5, rank #10
+#6: name node4, rank #7
+#7: name node4, rank #6
+#8: name node3, rank #3
+#9: name node3, rank #5
+#10: name node3, rank #4
+
+Step 1 of 11...
+Receiver: rank #1, name node2
+Sender: rank #2, name node3
+Message content:
+#1: name node1, rank #0
+#2: name node4, rank #8
+#3: name node5, rank #9
+#4: name node5, rank #11
+#5: name node5, rank #10
+#6: name node4, rank #7
+#7: name node4, rank #6
+#8: name node3, rank #3
+#9: name node3, rank #5
+#10: name node3, rank #4
+#11: name node3, rank #2
